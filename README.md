@@ -12,9 +12,6 @@ The goal is to send invoices electronically from the ERP system to the Authority
 ![Flowchart](flowchart.png)
 
 
-<img width="2061" height="6028" alt="flowchart" src="https://github.com/user-attachments/assets/2c83f04a-639b-48ba-bda8-b3e99774e1e9" />
-
-
 🔄 System Workflow
 
 Step-by-Step Integration Process:

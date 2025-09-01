@@ -9,6 +9,28 @@ The goal is to send invoices electronically from the ERP system to the Authority
 
 
 📊 Workflow Diagram
+
+flowchart TD
+    A[ASWAQ6 ERP System] --> B[Prepare Invoice Data]
+    B --> C[Validate Data Against<br>Egyptian Tax Requirements]
+    C --> D{Validation Passed?}
+    D -- Yes --> E[Prepare JSON Structure]
+    D -- No --> F[Log Error &<br>Return to ERP]
+    E --> G[Connect to Egyptian Tax Portal]
+    G --> H[Authenticate &<br>Get API Token]
+    H --> I[Generate Signed Request<br>Using SignedCMS]
+    I --> J[Send Invoice Data via API]
+    J --> K[Receive API Response]
+    K --> L{Response Status}
+    L -- Success --> M[Extract UUID from Response]
+    M --> N[Update ASWAQ6 Database<br>with UUID and Status]
+    N --> O[Log Successful Submission]
+    L -- Failure --> P[Parse Error Message]
+    P --> Q[Update Database with<br>Error Status and Details]
+    Q --> R[Implement Retry Mechanism]
+    R --> J
+    O --> S[Completion]
+    Q --> S
 <img width="2061" height="6028" alt="FLOWCHART" src="https://github.com/user-attachments/assets/2c83f04a-639b-48ba-bda8-b3e99774e1e9" />
 
 
